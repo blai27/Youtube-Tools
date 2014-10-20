@@ -14,7 +14,7 @@
   "web_accessible_resources": ["src/player.js"],
   "content_scripts": [
     {
-      "matches": ["http://www.youtube.com/user/*/videos"],
+      "matches": ["*://www.youtube.com/user/*/videos", "*://www.youtube.com/channel/*"],
       "js": ["src/jquery-1.11.1.js", "src/playlist_removal.js"],
       "run_at": "document_end"
     },

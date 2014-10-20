@@ -18,11 +18,18 @@
 		removePlaylistHref($(this));
 	});
 
+	$('a.ux-thumb-wrap').each(function(){
+		removePlaylistHref($(this));
+	});
+
 	// Bind click event to Load More button, listen for the videos container mutation event
 	// and perform the same href list removal
 	$('.yt-uix-load-more').click(function(){
 		$('#channels-browse-content-grid').bind('DOMSubtreeModified', function(){
 			$('.yt-uix-tile-link:not(.list-href-removed)').each(function(){
+				removePlaylistHref($(this));
+			});
+			$('.ux-thumb-wrap:not(.list-href-remove)').each(function(){
 				removePlaylistHref($(this));
 			});
 		});
