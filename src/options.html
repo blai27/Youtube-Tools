@@ -2,9 +2,41 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="options.css">
+		<script type="text/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="options.js"></script>
+		<script type="text/javascript" src="bootstrap.js"></script>
+
 		<title>Options for Youtube Tools</title>
+		<!-- <link rel="stylesheet" type="text/css" href="options.css"> -->
 	</head>
 	<body>
-		<button id="save" class="btn btn-primary">Save</button>
+		<div class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-brand">Youtube Tools Options</div>
+
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="collapse navbar-collapse navHeaderCollapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a href="#">General</a></li>
+						<li><a href="#">Navigation</a></li>
+						<li><a href="#">Player</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default general-settings">
+			<div class="panel-heading">
+				<h5 class="panel-title-general">General Settings</h3>
+			</div>
+			<div class="panel-body">
+				Some contents
+			</div>
+		</div>
 	</body>
 </html>

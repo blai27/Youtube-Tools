@@ -3,21 +3,24 @@
   "version": "1.0",
   "description": "A Google Chrome Extension that automates some actions when browsing/watching Youtube videos",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "tabs"
   ],
   "options_page": "src/options.html",
   "browser_action": {
       "default_title": "Youtube Tools"
   },
   "manifest_version": 2,
-  "background" : {
-    "scripts" : ["src/myscript2.js"]
-  },
-
+  "web_accessible_resources": ["src/player.js"],
   "content_scripts": [
     {
       "matches": ["http://www.youtube.com/user/*/videos"],
-      "js": ["src/jquery-1.11.1.js", "src/myscript.js"],
+      "js": ["src/jquery-1.11.1.js", "src/playlist_removal.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["http://www.youtube.com/watch*"],
+      "js": ["src/jquery-1.11.1.js", "src/watch_page.js"],
       "run_at": "document_end"
     }
   ]
