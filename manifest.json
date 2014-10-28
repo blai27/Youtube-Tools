@@ -4,7 +4,8 @@
   "description": "A Google Chrome Extension that automates some actions when browsing/watching Youtube videos",
   "permissions": [
     "activeTab",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "options_page": "src/html/options.html",
   "browser_action": {
