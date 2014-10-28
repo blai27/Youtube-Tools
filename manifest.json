@@ -6,21 +6,21 @@
     "activeTab",
     "tabs"
   ],
-  "options_page": "src/options.html",
+  "options_page": "src/html/options.html",
   "browser_action": {
       "default_title": "Youtube Tools"
   },
   "manifest_version": 2,
-  "web_accessible_resources": ["src/player.js"],
+  "web_accessible_resources": ["src/js/player.js"],
   "content_scripts": [
     {
       "matches": ["*://www.youtube.com/user/*/videos", "*://www.youtube.com/channel/*"],
-      "js": ["src/jquery-1.11.1.js", "src/playlist_removal.js"],
+      "js": ["src/js/jquery-1.11.1.js", "src/js/playlist_removal.js"],
       "run_at": "document_end"
     },
     {
       "matches": ["http://www.youtube.com/watch*"],
-      "js": ["src/jquery-1.11.1.js", "src/watch_page.js"],
+      "js": ["src/js/jquery-1.11.1.js", "src/js/watch_page.js"],
       "run_at": "document_end"
     }
   ]
