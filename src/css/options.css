@@ -1,51 +1,51 @@
 .navbar-wrap > .container {
-	padding-top: 15px;
+  padding-top: 15px;
 }
 
 .navbar-wrap .navbar {
-	padding-left: 15px;
-	padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .panel {
-	width: 70%;
-	margin: 0 auto;
-	margin-top: 50px;
-	opacity: 0;
-	display: none;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50px;
+  opacity: 0;
+  display: none;
 }
 
 .visible {
-	display: block;
+  display: block;
 }
 
 .glyphicon {
-	margin-left: 7px;
+  margin-left: 7px;
 }
 
 .tooltip-inner {
-	text-align: left;
+  text-align: left;
 }
 
 .save-settings {
-	float: right;
-	clear: none;
-	padding-top: 20px;
-	display: none;
+  float: right;
+  clear: none;
+  padding-top: 20px;
+  display: none;
 }
 
 .setting-wrapper {
-	display: table;
-	width: 100%;
+  display: table;
+  width: 100%;
 }
 
 #rm-playlist-text {
-	width: 60%;
-	display: table-cell;
-	vertical-align: middle;
+  width: 60%;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 #rm-playlist-options {
-	display: table-cell;
-	vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }

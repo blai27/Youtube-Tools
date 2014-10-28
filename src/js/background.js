@@ -1,4 +1,4 @@
 (function(){
 
-	var bgSettings = null;
+  var bgSettings = null;
 })();
