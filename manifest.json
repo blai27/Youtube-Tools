@@ -5,8 +5,13 @@
   "permissions": [
     "activeTab",
     "tabs",
-    "storage"
+    "storage",
+    "*://www.youtube.com/*"
   ],
+  "background": {
+    "page": "src/html/background.html",
+    "persistent": true
+  },
   "options_page": "src/html/options.html",
   "browser_action": {
       "default_title": "Youtube Tools"
@@ -15,7 +20,7 @@
   "web_accessible_resources": ["src/js/player.js"],
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/user/*/videos", "*://www.youtube.com/channel/*"],
+      "matches": ["*://www.youtube.com/*"],
       "js": ["src/js/jquery-1.11.1.js", "src/js/playlist_removal.js"],
       "run_at": "document_end"
     },
