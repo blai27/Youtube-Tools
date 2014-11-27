@@ -15,8 +15,6 @@
   function removePlaylistHref(ytTile) {
     var hrefURL = ytTile.attr('href');
     var tokens = hrefURL.split(/&list/);
-    console.log(hrefURL);
-    console.log(tokens[0]);
     ytTile.addClass(removedTag);
     ytTile.attr('href', tokens[0]); 
   }

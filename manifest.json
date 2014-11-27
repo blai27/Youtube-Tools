@@ -25,7 +25,7 @@
       "run_at": "document_end"
     },
     {
-      "matches": ["http://www.youtube.com/watch*"],
+      "matches": ["*://www.youtube.com/*"],
       "js": ["src/js/jquery-1.11.1.js", "src/js/watch_page.js"],
       "run_at": "document_end"
     }
