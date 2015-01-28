@@ -4,12 +4,10 @@
   var playerBtn = null;
   var navigPage = null;
   var playerPage = null;
-  var isDirty = false;
 
   /* Navigation variables */
 
-  var removePlaylistToggle = null;
-  var removePlaylist = false;
+  var removePlaylist = null;
 
   /* Player variables */
   var defaultPlayerQualityGroup = null;
@@ -55,30 +53,20 @@
   }
 
   function dirty(flag) {
-    if (flag) {
-      saveBtn.removeClass('disabled');
-    }
-    else {
-      saveBtn.addClass('disabled');
-    }
-    isDirty = flag;
+    flag? saveBtn.removeClass('disabled') : saveBtn.addClass('disabled');
   }
 
-  function qDirty() {
-    return isDirty;
+  function initCheckBoxToggle(cbID) {
+    var setting = $(cbID);
+    setting.change(function() {
+      setting[0].checked = $(this).is(':checked');
+      dirty(true);
+    });
+    return setting;
   }
 
   function initNavPage() {
-    removePlaylistToggle = $('#rm-playlist');
-    removePlaylistToggle.change(function(){
-      if ($(this).is(':checked')) {
-        removePlaylist = true;
-      }
-      else {
-        removePlaylist = false;
-      }
-      dirty(true);
-    });
+    removePlaylist = initCheckBoxToggle('#rm-playlist');
   }
 
   function qualityBtnToggle(qButtons, index) {
@@ -150,12 +138,12 @@
   function initPlayerPage() {
     // Quality buttons
     defaultPlayerQualityGroup = $('default-quality-list');
-    qualityButtons = { auto: {obj: $('#auto'), text: 'auto', active: false},
-                       tiny: {obj: $('#tiny'), text: 'tiny', active: false},
-                      small: {obj: $('#small'), text: 'small', active: false},
+    qualityButtons = { auto: {obj: $('#auto'),   text: 'auto',   active: false},
+                       tiny: {obj: $('#tiny'),   text: 'tiny',   active: false},
+                      small: {obj: $('#small'),  text: 'small',  active: false},
                      medium: {obj: $('#medium'), text: 'medium', active: false},
-                      large: {obj: $('#large'), text: 'large', active: false},
-                      hd720: {obj: $('#hd720'), text: 'hd720', active: false},
+                      large: {obj: $('#large'),  text: 'large',  active: false},
+                      hd720: {obj: $('#hd720'),  text: 'hd720',  active: false},
                      hd1080: {obj: $('#hd1080'), text: 'hd1080', active: false} };
     initQualityClickHandlers(defaultPlayerQualityGroup, qualityButtons);
     
@@ -174,8 +162,7 @@
     removeAnnotationsToggle.change(function(){
       if ($(this).is(':checked')) {
         removeAnnotations = true;
-      }
-      else {
+      } else {
         removeAnnotations = false;
       }
       dirty(true);
@@ -186,8 +173,7 @@
     pauseVideoOnStartToggle.change(function() {
       if ($(this).is(':checked')) {
         pauseVideoOnStart = true;
-      }
-      else {
+      } else {
         pauseVideoOnStart = false;
       }
       dirty(true);
@@ -199,8 +185,6 @@
   }
 
   function reloadPlayerSettings() {
-    removePlaylistToggle[0].checked = removePlaylist;
-
     qualityButtons[defaultPlayerQuality].active = true;
     qualityButtons[defaultPlayerQuality].obj.addClass('active');
 
@@ -223,7 +207,7 @@
                              'player_size'], 
                               function(result){
       if (result['nav_rmPL'] !== undefined) {
-        removePlaylist = result['nav_rmPL'];
+        removePlaylist[0].checked = result['nav_rmPL'];
       }
       if (result['player_quality'] !== undefined) {
         defaultPlayerQuality = result['player_quality'];
@@ -249,7 +233,7 @@
     saveNotify = $('.save-notify');
     saveBtn.click(function(){
       chrome.storage.sync.set({
-        'nav_rmPL': removePlaylist,
+        'nav_rmPL': removePlaylist[0].checked,
         'player_quality': defaultPlayerQuality,
         'player_volume': defaultVolume,
         'player_annotation': removeAnnotations,
@@ -281,7 +265,6 @@
     navigPage.css('opacity', '1');
 
     initGlobalNavToggle();
-    
     initGlobal();
     initNavPage();
     initPlayerPage();

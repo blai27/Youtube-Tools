@@ -1,5 +1,8 @@
 (function(){
   
+  // As of Jan 2015, this feature is longer available on YouTube
+  // Deprecated. Code is left for future reference.
+
   var removedTag = 'list-href-removed';
   var content = '#content';
   var gridContainer = '#channels-browse-content-grid';
@@ -74,7 +77,6 @@
 
   function init() {
     execute($(titleHrefLink), $(imgHrefTile));
-
     $(gridContainer).on('DOMNodeInserted', gridInsertTarget,function(event) {
       execute($(event.target).find(titleHrefRemoved),
               $(event.target).find(imgHrefRemoved), 'grid');
